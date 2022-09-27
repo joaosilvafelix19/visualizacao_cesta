@@ -6,8 +6,7 @@ root = os.getcwd()
 if root[0] == '/':
     root = '/app/visualizacao_cesta/'
 else:
-    from pages.utils import getParentDir
-    root = getParentDir(os.getcwd(), levels=1)
+    root = os.path.abspath('../..')
 path = '/arquivos/aplicativo/imagens'
 
 #from PIL import Image

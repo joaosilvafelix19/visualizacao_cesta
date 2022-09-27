@@ -12,8 +12,7 @@ root = os.getcwd()
 if root[0] == '/':
     root = '/app/visualizacao_cesta/'
 else:
-    from utils import getParentDir
-    root = getParentDir(os.getcwd(), levels=2)
+    root = os.path.abspath('../..')
 path = '/arquivos/aplicativo/dados'
 
 # Importando os dados da cesta
