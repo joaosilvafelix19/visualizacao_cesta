@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 #$os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
 
 # Importando os dados da cesta
-cesta = pd.read_excel("C:/Users/joaos/Dropbox/Dados/1_coleta_jpd/dados_jp.xlsx")
+cesta = pd.read_excel("C:/Users/joaos/Documents/MeusProjetos/visualizacao_cesta/arquivos/aplicativo/dados_jp.xlsx")
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 df30 = df.tail(30)
 
