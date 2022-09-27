@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from PIL import Image
 
-os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo")
+os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
 
 #from PIL import Image
 img = Image.open('labimec.jpg')
