@@ -5,7 +5,7 @@ from PIL import Image
 #os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
 
 #from PIL import Image
-img = Image.open('C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp\\labimec.jpg')
+img = Image.open('C://Users//joaos//Dropbox\//Dados//1_coleta_jp//labimec.jpg')
 
 st.set_page_config(
     page_title = "Cesta Básica LABIMEC",
