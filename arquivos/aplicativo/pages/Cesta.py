@@ -4,12 +4,16 @@ import pandas as pd
 import os
 import plotly.express as px
 import plotly.graph_objects as go
-from utils import getParentDir
 
 # Importando os dados e fazendo algumas manipulações
 
 # Definindo diretório
-root = getParentDir(os.getcwd(), levels=2)
+root = os.getcwd()
+if root[0] == '/':
+    root = '/app/visualizacao_cesta/'
+else:
+    from utils import getParentDir
+    root = getParentDir(os.getcwd(), levels=2)
 path = '/arquivos/aplicativo/dados'
 
 # Importando os dados da cesta
