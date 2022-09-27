@@ -1,2 +1,2 @@
 plotly==5.10.0
-st_aggrid==0.3.3
+st_aggrid==0.2.3
