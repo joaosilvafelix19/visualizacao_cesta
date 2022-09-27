@@ -8,7 +8,7 @@ os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivo
 path = '/app/visualizacao_cesta/arquivos/aplicativo/dados'
 
 # Importando os dados dos preços não ponerados
-cesta = pd.read_excel(f"{path}/dados_jp.xlsx", sheet_name="cesta")
+cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="cesta")
 
 # Selecionando apenas as colunas das médias
 cesta = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]

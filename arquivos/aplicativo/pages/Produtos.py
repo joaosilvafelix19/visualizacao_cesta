@@ -8,12 +8,13 @@ import time
 from st_aggrid import AgGrid
 
 # Importando os dados e fazendo algumas manipulações
-path = '/app/visualizacao_cesta/arquivos/aplicativo/dados'
+root = os.path.abspath('../..')
+path = '/arquivos/aplicativo/dados'
 
 # Importando os dados dos preços não ponerados
-precos = pd.read_excel(f"{path}/dados_jp.xlsx", sheet_name="precos")
+precos = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="precos")
 precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
-dff = pd.read_excel(f"{path}/dados_jp.xlsx", sheet_name="precos")
+dff = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="precos")
 
 # Selecionando apenas a data e os valores referentes as médias dos produtos
 df = precos.iloc[:,[1,2,6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]

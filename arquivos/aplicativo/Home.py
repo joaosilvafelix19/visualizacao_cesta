@@ -2,10 +2,14 @@ import streamlit as st
 import os
 from PIL import Image
 
-path = '/app/visualizacao_cesta/arquivos/aplicativo/imagens'
+root = os.path.abspath('../..')
+
+path = '/arquivos/aplicativo/imagens'
 
 #from PIL import Image
-img = Image.open(f'{path}/labimec.jpg')
+img = Image.open(f'{root}{path}/labimec.jpg')
+
+print(f'{root}{path}/labimec.jpg')
 
 st.set_page_config(
     page_title = "Cesta Básica LABIMEC",
@@ -39,6 +43,6 @@ with col1:
              """)
     
 with col2:
-    st.image(f'{path}/labimec.jpg)
+    st.image(f'{root}{path}/labimec.jpg')
             
 st.caption("Compreende a região metropolitana de João pessoa: Bayeux, Cabedelo, Conde, Cruz do Espírito Santo, João Pessoa, Lucena, Mamanguape, Rio Tinto, Santa Rita, Alhandra, Caaporã e Pitimbu. - Lei complementar nº. 93 de 11 de dezembro de 2009")
