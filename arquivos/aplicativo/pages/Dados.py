@@ -7,7 +7,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 from datetime import datetime, timezone
 
 # Definindo diretório
-streaos.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
+os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados")
 
 # Importando os dados dos preços não ponerados
 precos = pd.read_excel("dados_jp.xlsx", sheet_name="precos").round(2)
