@@ -1,9 +1,9 @@
 import streamlit as st
 import os
 from PIL import Image
+from pages.utils import getParentDir
 
-root = os.path.abspath('../..')
-
+root = getParentDir(os.getcwd(), levels=1)
 path = '/arquivos/aplicativo/imagens'
 
 #from PIL import Image

@@ -6,9 +6,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 import time
 from st_aggrid import AgGrid
+from utils import getParentDir
+import os
+
 
 # Importando os dados e fazendo algumas manipulações
-root = os.path.abspath('../..')
+root = getParentDir(os.getcwd(), levels=2)
 path = '/arquivos/aplicativo/dados'
 
 # Importando os dados dos preços não ponerados

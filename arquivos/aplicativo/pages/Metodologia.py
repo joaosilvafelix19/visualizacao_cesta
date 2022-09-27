@@ -2,10 +2,12 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from st_aggrid import AgGrid
+from utils import getParentDir
 import os
+
 # Definindo diretório
-os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados")
-path = '/app/visualizacao_cesta/arquivos/aplicativo/dados'
+root = getParentDir(os.getcwd(), levels=2)
+path = '/arquivos/aplicativo/dados'
 
 # Importando os dados dos preços não ponerados
 cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="cesta")

@@ -5,9 +5,10 @@ import os
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from datetime import datetime, timezone
+from utils import getParentDir
 
 # Definindo diretório
-root = os.path.abspath('../..')
+root = getParentDir(os.getcwd(), levels=2)
 path = '/arquivos/aplicativo/dados'
 
 # Importando os dados dos preços não ponerados

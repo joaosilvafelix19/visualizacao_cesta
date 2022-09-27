@@ -4,11 +4,12 @@ import pandas as pd
 import os
 import plotly.express as px
 import plotly.graph_objects as go
+from utils import getParentDir
 
 # Importando os dados e fazendo algumas manipulações
 
 # Definindo diretório
-root = os.path.abspath('../..')
+root = getParentDir(os.getcwd(), levels=2)
 path = '/arquivos/aplicativo/dados'
 
 # Importando os dados da cesta
