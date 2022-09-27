@@ -8,10 +8,10 @@ import plotly.graph_objects as go
 # Importando os dados e fazendo algumas manipulações
 
 # Definindo diretório
-os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados")
+#os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados")
 
 # Importando os dados da cesta
-cesta = pd.read_excel("dados_jp.xlsx")
+cesta = pd.read_excel("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados\\dados_jp.xlsx")
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 df30 = df.tail(30)
 
