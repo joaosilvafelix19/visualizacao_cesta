@@ -4,7 +4,7 @@ from PIL import Image
 import hydralit_components as hc
 
 
-os.chdir("C:\\Users\joaos\\Desktop\\aplicativo")
+os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
 
 #from PIL import Image
 img = Image.open('labimec.jpg')
