@@ -7,10 +7,10 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 from datetime import datetime, timezone
 
 # Definindo diretório
-#os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
+os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
 
 # Importando os dados dos preços não ponerados
-precos = pd.read_excel(r"C:/Users/joaos/Documents/MeusProjetos/visualizacao_cesta/arquivos/aplicativo/pages/dados_jp.xlsx", sheet_name="precos").round(2)
+precos = pd.read_excel("dados_jp.xlsx", sheet_name="precos").round(2)
 precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
 precos_ponderados = pd.read_excel("dados_jp.xlsx", sheet_name="cesta").round(2)
 precos_ponderados['data'] = precos_ponderados['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
