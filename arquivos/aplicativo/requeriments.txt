@@ -1,2 +1,2 @@
-plotly
+pip install plotly==5.10.0
 st_aggrid
