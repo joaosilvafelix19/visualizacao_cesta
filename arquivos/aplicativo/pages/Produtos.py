@@ -8,7 +8,7 @@ import time
 from st_aggrid import AgGrid
 
 # Importando os dados e fazendo algumas manipulações
-path = '../dados/'
+path = '/app/visualizacao_cesta/arquivos/aplicativo/dados'
 
 # Importando os dados dos preços não ponerados
 precos = pd.read_excel(f"{path}/dados_jp.xlsx", sheet_name="precos")
