@@ -2,8 +2,6 @@ import streamlit as st
 import os
 from PIL import Image
 
-
-
 os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
 
 #from PIL import Image
