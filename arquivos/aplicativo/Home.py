@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 from PIL import Image
-import hydralit_components as hc
+
 
 
 os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
