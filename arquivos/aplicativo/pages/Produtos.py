@@ -10,7 +10,7 @@ from st_aggrid import AgGrid
 # Importando os dados e fazendo algumas manipulações
 
 # Definindo diretório
-os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
+os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados")
 
 # Importando os dados dos preços não ponerados
 precos = pd.read_excel("dados_jp.xlsx", sheet_name="precos")

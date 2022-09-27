@@ -4,7 +4,7 @@ import pandas as pd
 from st_aggrid import AgGrid
 import os
 # Definindo diretório
-os.chdir("C:\\Users\\joaos\\Dropbox\\Dados\\1_coleta_jp")
+os.chdir("C:\\Users\\joaos\\Documents\\MeusProjetos\\visualizacao_cesta\\arquivos\\aplicativo\\dados")
 
 # Importando os dados dos preços não ponerados
 cesta = pd.read_excel("dados_jp.xlsx", sheet_name="cesta")
