@@ -38,7 +38,7 @@ st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 st.markdown("Abaixo, no gráfico à esquerda, encontra-se a evolução diária do custo da cesta básica na cidade João Pessoa. No gráfico da direita é mostrado quanto cada produto ponderado pelo decreto lei nº 399 de 1938 representa no dia atual, ou seja, este gráfico é atualizado diariamente")
 
 # Seleciona as colunas data e média cesta
-cesta = cesta.iloc[:,[1,-5]]
+cesta = cesta.iloc[:,[1,-3]]
 
 Produtos = pd.DataFrame(dict(
     produtos = ["4,5KG-Carne","6L-Leite","4,5KG-Feijão","3,6KG-Arroz","3KG-Farinha",
