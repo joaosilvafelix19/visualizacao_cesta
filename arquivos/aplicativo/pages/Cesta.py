@@ -18,7 +18,7 @@ path = '/arquivos/aplicativo/dados'
 # Importando os dados da cesta
 cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx")
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
-df30 = df.tail(30)
+df30 = df.tail(1)
 
 carne = df30['media_carne'].mean().round(2)
 leite = df30['media_leite'].mean().round(2)
