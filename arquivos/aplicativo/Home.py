@@ -34,7 +34,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.write("""
-             Por fim, ressalta-se que este aplicativo foi desenvolvido pelo Laboratório de Inteligência Artificial e Macroeconomia Computacional (LABIMEC-UFPB) e é certificado pelo Instituto Nacional da Propriedade Industrial (INPI).
+             Por fim, ressalta-se que este aplicativo foi desenvolvido pelo Laboratório de Inteligência Artificial e Macroeconomia Computacional (LABIMEC-UFPB) fruto de uma dissertação e, é certificado pelo Instituto Nacional da Propriedade Industrial (INPI).
              
              Caso queira ficar atualizado sobre informações sobre o custo da cesta básica e outras informações sobre assuntos econômicos, nos siga nas nossas redes sociais ou nos envie um e-mail: 
              
