@@ -34,9 +34,9 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.write("""
-             Por fim, ressalta-se que este aplicativo foi desenvolvido pelo Laboratório de Inteligência Artificial e Macroeconomia Computacional (LABIMEC-UFPB) fruto de uma dissertação e, é certificado pelo Instituto Nacional da Propriedade Industrial (INPI).
+             Por fim, ressalta-se que este aplicativo foi desenvolvido pelo Laboratório de Inteligência Artificial e Macroeconomia Computacional (LABIMEC-UFPB), fruto da dissertação intitulada: "Coleta de preços on-line de forma automática e estimação do custo da cesta básica: uma aplicação para o município de João Pessoa". Em março de 2022 o Instituto Nacional da Propriedade Industrial (INPI) expediu o certificado de registro de programa de computador, válido por 50 anos a partir de 1° de janeiro subsequente à data de 08/11/2020, em conformidade com o §2°, art. 2° da Lei 9.609, de 19 de Fevereiro de 1998 para o aplicativo intitulado: Coletor e analisador de dados de alta frequência para o custo da cesta básica..
              
-             Caso queira ficar atualizado sobre informações sobre o custo da cesta básica e outras informações sobre assuntos econômicos, nos siga nas nossas redes sociais ou nos envie um e-mail: 
+             Além de dados atualizados sobre o custo da cesta básica, também desenvolvemos indicadores e outras informações sobre assuntos econômicos. Mais detalhes podem ser obtidos nas nossas redes sociais ou solicitado por e-mail: 
              
              **Instagram:** https://www.instagram.com/labimec/ 
              
