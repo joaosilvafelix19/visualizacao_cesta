@@ -9,6 +9,10 @@ root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta/'
 path = 'arquivos/aplicativo/dados/'
 cesta_path = os.path.join(root, path, 'dados_jp.xlsx')  # Adjusted path
 
+# Print the path to check if it is correct
+st.write(f"Root path: {root}")
+st.write(f"Data path: {path}")
+st.write(f"Full path: {cesta_path}")
 
 # Check if the file exists
 if not os.path.exists(cesta_path):
@@ -68,17 +72,17 @@ else:
 
     # Estatísticas Descritivas
     last7 = cesta.tail(7)
-    last7 = last7['media_cesta'].mean()
+    last7_mean = last7['media_cesta'].mean()
     last14 = cesta.tail(14)
     mean14 = last14['media_cesta'].mean()
-    dif14_7 = mean14 - last7
+    dif14_7 = mean14 - last7_mean
 
     last15 = cesta.tail(15)
-    last15 = last15['media_cesta'].mean()
+    last15_mean = last15['media_cesta'].mean()
 
     last30 = cesta.tail(30)
     mean30 = last30['media_cesta'].mean()
-    dif30_15 = mean30 - last15
+    dif30_15 = mean30 - last15_mean
 
     min_last30 = last30['media_cesta'].min()
     medi_last30 = last30['media_cesta'].median()
@@ -91,8 +95,8 @@ else:
     st.markdown("As estatísticas a seguir mostram qual o valor da cesta básica nos últimos 7, 15 e 30 dias respectivamente, abaixo encontram-se as variações em reais dos últimos 14, 30 e 60 dias respectivamente")
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Média 7 dias", f'R$ {last7.round(2)}', dif14_7.round(2))
-    col2.metric("Média 15 dias", f'R$ {last15.round(2)}', dif30_15.round(2))
+    col1.metric("Média 7 dias", f'R$ {last7_mean.round(2)}', dif14_7.round(2))
+    col2.metric("Média 15 dias", f'R$ {last15_mean.round(2)}', dif30_15.round(2))
     col3.metric("Média 30 dias", f'R$ {mean30.round(2)}', dif60_30.round(2))
 
     st.markdown("Adiante é mostrado qual os valores mínimo, da mediana e o valor máximo do custo estimado da cesta básica em João Pessoa nos últimos 30 dias")
