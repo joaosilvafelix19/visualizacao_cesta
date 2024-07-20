@@ -3,7 +3,6 @@ import pandas as pd
 import os
 import plotly.express as px
 import plotly.graph_objects as go
-import openpyxl
 
 # Define the relative path to the data file
 relative_path = 'arquivos/aplicativo/dados/dados_jp.xlsx'
