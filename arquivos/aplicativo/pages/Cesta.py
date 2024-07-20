@@ -7,13 +7,13 @@ import plotly.graph_objects as go
 # Define the correct root path
 root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
 path = '/arquivos/aplicativo/dados'
-cesta_path = os.path.join(root, path, 'dados_jp.xlsx')
+cesta_path = os.path.join(root, path.lstrip('/'), 'dados_jp.xlsx')  # Adjust path by removing leading '/'
 
 # Check if the file exists
 if not os.path.exists(cesta_path):
     st.error(f"File not found: {cesta_path}")
 else:
-    # Importando os dados e fazendo algumas manipulações
+    # Importing data and performing manipulations
     cesta = pd.read_excel(cesta_path)
     df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
     df30 = df.tail(1)
