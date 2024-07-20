@@ -9,8 +9,6 @@ root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta/'
 path = 'arquivos/aplicativo/dados/'
 cesta_path = os.path.join(root, path, 'dados_jp.xlsx')  # Adjusted path
 
-# Print the path to check if it is correct
-st.write(f"Path to data file: {cesta_path}")
 
 # Check if the file exists
 if not os.path.exists(cesta_path):
