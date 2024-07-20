@@ -16,9 +16,9 @@ if root[0] == '/':
 else:
     root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
 
-
 # Set the path to the image
 path = os.path.join(root, 'arquivos', 'aplicativo', 'imagens', 'labimec.jpg')
+
 
 #from PIL import Image
 img = Image.open(f'{root}{path}/labimec.jpg')
