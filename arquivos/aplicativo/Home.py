@@ -1,106 +1,60 @@
 import streamlit as st
-import pandas as pd
 import os
-import plotly.express as px
-import plotly.graph_objects as go
+from PIL import Image
 
-# Define the relative path to the data file
-relative_path = 'arquivos/aplicativo/dados/dados_jp.xlsx'
+# Define the relative path to the image file
+relative_path = 'arquivos/aplicativo/imagens/labimec.jpg'
 
-# Get the absolute path of the data file
-cesta_path = os.path.join(os.getcwd(), relative_path)
+# Get the absolute path of the image file
+img_path = os.path.join(os.getcwd(), relative_path)
 
-# Print the path to check if it is correct
-st.write(f"Full path to data file: {cesta_path}")
-
-# Check if the file exists
-if not os.path.exists(cesta_path):
-    st.error(f"File not found: {cesta_path}")
+# Check if the image exists
+if os.path.exists(img_path):
+    img = Image.open(img_path)
 else:
-    # Importing data and performing manipulations
-    cesta = pd.read_excel(cesta_path)
-    df = cesta.iloc[:, [6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
-    df30 = df.tail(1)
+    st.error(f"Image file not found at {img_path}")
+    img = None  # Set img to None if the file is not found
 
-    carne = df30['media_carne'].mean().round(2)
-    leite = df30['media_leite'].mean().round(2)
-    feijao = df30['media_feijao'].mean().round(2)
-    arroz = df30['media_arroz'].mean().round(2)
-    farinha = df30['media_farinha'].mean().round(2)
-    tomate = df30['media_tomate'].mean().round(2)
-    pao = df30['media_pao'].mean().round(2)
-    cafe = df30['media_cafe'].mean().round(2)
-    banana = df30['media_banana'].mean().round(2)
-    acucar = df30['media_acucar'].mean().round(2)
-    oleo = df30['media_oleo'].mean().round(2)
-    manteiga = df30['media_manteiga'].mean().round(2)
+st.set_page_config(
+    page_title = "Cesta Básica LABIMEC",
+    layout="wide",
+    initial_sidebar_state="auto",
+   page_icon = img
+)
 
-    st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 
-    st.markdown("Abaixo, no gráfico à esquerda, encontra-se a evolução diária do custo da cesta básica na cidade João Pessoa. No gráfico da direita é mostrado quanto cada produto ponderado pelo decreto lei nº 399 de 1938 representa no dia atual, ou seja, este gráfico é atualizado diariamente")
+st.title('Introdução')
 
-    # Seleciona as colunas data e média cesta
-    cesta = cesta.iloc[:, [1, 54]]
+st.markdown("A coleta de informações de forma automática por meio de dados disponíveis na internet vem crescendo continuamente e rapidamente para uma ampla gama de produtos e serviços, incluindo a coleta de preços de produtos alimentícios. Junto a esta maior disponibilidade de preços sobre produtos em aplicativos ou em web pages, também há novas formas de coleta de dados por meio de tecnologias como web scraping, criando-se, desta forma, possibilidades para que se possa construir novos índices de preços ou seguir metodologias de órgãos estatísticos oficiais com dados disponíveis on-line.")
 
-    Produtos = pd.DataFrame(dict(
-        produtos=["4,5KG-Carne", "6L-Leite", "4,5KG-Feijão", "3,6KG-Arroz", "3KG-Farinha",
-                  "12KG-Tomate", "6KG-Pão", "300GR-Café", "11,25KG-Banana", "3KG-Açúcar",
-                  "750ML-Óleo", "750GR-Manteiga"],
-        custo=[carne, leite, feijao, arroz, farinha, tomate, pao, cafe, banana, acucar, oleo, manteiga]))
+st.markdown("Dada esta possibilidade, esse aplicativo tem o propósito de acompanhar e exibir algumas informações sobre os custos de uma cesta de produtos alimentícios para o município de João Pessoa, sendo atualizado diariamente e de forma automática. Inicialmente, o acompanhamento das alterações nos preços desta cesta de bens será limitado a região metropolitana da capital do Estado da Paraíba, podendo ter sua análise ampliada em um momento futuro para mais capitais brasileiras e mais itens.")
 
-    col_a, col_b = st.columns(2)
+st.markdown("Os bens escolhidos para o acompanhamento e estimação do custo da cesta básica são os indicados pelo decreto lei n° 399/1938 que, entre outras coisas, estabelece quais itens serão considerados para a composição da cesta em cada região do país e a quantidade mínima que cada adulto deve consumir por mês.")
 
-    with col_a:
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=cesta['data'], y=cesta['media_cesta'], name='', line=dict(color='royalblue', width=4)))
-        fig.update_layout(title='Evolução diária custo da cesta básica',
-                          xaxis_title='Período',
-                          yaxis_title='Custo (R$)')
-        st.plotly_chart(fig, use_container_width=True)
+col1, col2 = st.columns(2)
 
-    with col_b:
-        fig_peso = px.bar(Produtos, y='produtos', x='custo', text_auto='.5s',
-                         title="Custo ponderado por produto",
-                         orientation="h",
-                         text='custo')
-        fig_peso.update_layout(yaxis={'categoryorder': 'total ascending'},
-                               xaxis_title='Custo (R$)',
-                               yaxis_title='Produto ponderado')
+with col1:
+    st.write("""
+             Por fim, ressalta-se que este aplicativo foi desenvolvido pelo Laboratório de Inteligência Artificial e Macroeconomia Computacional (LABIMEC-UFPB), fruto da dissertação intitulada: "Coleta de preços on-line de forma automática e estimação do custo da cesta básica: uma aplicação para o município de João Pessoa". Em março de 2022 o Instituto Nacional da Propriedade Industrial (INPI) expediu o certificado de registro de programa de computador, válido por 50 anos a partir de 1° de janeiro subsequente à data de 08/11/2020, em conformidade com o §2°, art. 2° da Lei 9.609, de 19 de Fevereiro de 1998 para o aplicativo intitulado: Coletor e analisador de dados de alta frequência para o custo da cesta básica..
+             
+             Além de dados atualizados sobre o custo da cesta básica, também desenvolvemos indicadores e outras informações sobre assuntos econômicos. Mais detalhes podem ser obtidos nas nossas redes sociais ou solicitado por e-mail: 
+             
+             **Instagram:** https://www.instagram.com/labimec/ 
+             
+             **Twitter:** https://twitter.com/labimec
+             
+             **E-mail:** labimecufpb@gmail.com
+             """)
+    
+#with col2:
+#    st.image(f'{root}{path}/labimec.jpg')
+            
+st.caption("Compreende a região metropolitana de João pessoa: Bayeux, Cabedelo, Conde, Cruz do Espírito Santo, João Pessoa, Lucena, Mamanguape, Rio Tinto, Santa Rita, Alhandra, Caaporã e Pitimbu. - Lei complementar nº. 93 de 11 de dezembro de 2009")
 
-        st.plotly_chart(fig_peso, use_container_width=True)
+with col2:
+    if img is not None:
+        st.image(img)
+    else:
+        st.error("Unable to display image.")
 
-    # Estatísticas Descritivas
-    last7 = cesta.tail(7)
-    last7_mean = last7['media_cesta'].mean()
-    last14 = cesta.tail(14)
-    mean14 = last14['media_cesta'].mean()
-    dif14_7 = mean14 - last7_mean
-
-    last15 = cesta.tail(15)
-    last15_mean = last15['media_cesta'].mean()
-
-    last30 = cesta.tail(30)
-    mean30 = last30['media_cesta'].mean()
-    dif30_15 = mean30 - last15_mean
-
-    min_last30 = last30['media_cesta'].min()
-    medi_last30 = last30['media_cesta'].median()
-    max_last30 = last30['media_cesta'].max()
-
-    last60 = cesta.tail(60)
-    mean60 = last60['media_cesta'].mean()
-    dif60_30 = mean60 - mean30
-
-    st.markdown("As estatísticas a seguir mostram qual o valor da cesta básica nos últimos 7, 15 e 30 dias respectivamente, abaixo encontram-se as variações em reais dos últimos 14, 30 e 60 dias respectivamente")
-
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Média 7 dias", f'R$ {last7_mean.round(2)}', dif14_7.round(2))
-    col2.metric("Média 15 dias", f'R$ {last15_mean.round(2)}', dif30_15.round(2))
-    col3.metric("Média 30 dias", f'R$ {mean30.round(2)}', dif60_30.round(2))
-
-    st.markdown("Adiante é mostrado qual os valores mínimo, da mediana e o valor máximo do custo estimado da cesta básica em João Pessoa nos últimos 30 dias")
-
-    col4, col5, col6 = st.columns(3)
-    col4.metric("Mínimo 30 dias", f"R$ {min_last30.round(2)}")
-    col5.metric("Mediana 30 dias", f"R$ {medi_last30.round(2)}")
-    col6.metric("Máximo 30 dias", f"R$ {max_last30.round(2)}")
+st.caption("Compreende a região metropolitana de João pessoa: Bayeux, Cabedelo, Conde, Cruz do Espírito Santo, João Pessoa, Lucena, Mamanguape, Rio Tinto, Santa Rita, Alhandra, Caaporã e Pitimbu. - Lei complementar nº. 93 de 11 de dezembro de 2009")
