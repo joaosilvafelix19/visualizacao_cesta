@@ -4,12 +4,12 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Define root path based on your specific environment
+# Define the correct root path
 root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
 path = '/arquivos/aplicativo/dados'
 cesta_path = os.path.join(root, path, 'dados_jp.xlsx')
 
-# Check if file exists
+# Check if the file exists
 if not os.path.exists(cesta_path):
     st.error(f"File not found: {cesta_path}")
 else:
