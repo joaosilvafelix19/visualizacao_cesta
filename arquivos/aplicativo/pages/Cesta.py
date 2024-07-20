@@ -9,13 +9,16 @@ root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
 path = '/arquivos/aplicativo/dados'
 cesta_path = os.path.join(root, path.lstrip('/'), 'dados_jp.xlsx')  # Adjust path by removing leading '/'
 
+# Print the path to check if it is correct
+st.write(f"Path to data file: {cesta_path}")
+
 # Check if the file exists
 if not os.path.exists(cesta_path):
     st.error(f"File not found: {cesta_path}")
 else:
     # Importing data and performing manipulations
     cesta = pd.read_excel(cesta_path)
-    df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+    df = cesta.iloc[:, [6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
     df30 = df.tail(1)
 
     carne = df30['media_carne'].mean().round(2)
@@ -36,13 +39,13 @@ else:
     st.markdown("Abaixo, no gráfico à esquerda, encontra-se a evolução diária do custo da cesta básica na cidade João Pessoa. No gráfico da direita é mostrado quanto cada produto ponderado pelo decreto lei nº 399 de 1938 representa no dia atual, ou seja, este gráfico é atualizado diariamente")
 
     # Seleciona as colunas data e média cesta
-    cesta = cesta.iloc[:,[1, 54]]
+    cesta = cesta.iloc[:, [1, 54]]
 
     Produtos = pd.DataFrame(dict(
-        produtos = ["4,5KG-Carne","6L-Leite","4,5KG-Feijão","3,6KG-Arroz","3KG-Farinha",
-                    "12KG-Tomate","6KG-Pão","300GR-Café","11,25KG-Banana", "3KG-Açúcar",
-                    "750ML-Óleo", "750GR-Manteiga"],
-        custo = [carne, leite, feijao, arroz, farinha, tomate, pao, cafe, banana, acucar, oleo, manteiga])) 
+        produtos=["4,5KG-Carne", "6L-Leite", "4,5KG-Feijão", "3,6KG-Arroz", "3KG-Farinha",
+                  "12KG-Tomate", "6KG-Pão", "300GR-Café", "11,25KG-Banana", "3KG-Açúcar",
+                  "750ML-Óleo", "750GR-Manteiga"],
+        custo=[carne, leite, feijao, arroz, farinha, tomate, pao, cafe, banana, acucar, oleo, manteiga]))
 
     col_a, col_b = st.columns(2)
 
@@ -50,18 +53,18 @@ else:
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=cesta['data'], y=cesta['media_cesta'], name='', line=dict(color='royalblue', width=4)))
         fig.update_layout(title='Evolução diária custo da cesta básica',
-                       xaxis_title='Período',
-                       yaxis_title='Custo (R$)')
+                          xaxis_title='Período',
+                          yaxis_title='Custo (R$)')
         st.plotly_chart(fig, use_container_width=True)
 
     with col_b:
         fig_peso = px.bar(Produtos, y='produtos', x='custo', text_auto='.5s',
-                    title="Custo ponderado por produto",
-                    orientation="h",
-                    text = 'custo')
-        fig_peso.update_layout(yaxis={'categoryorder':'total ascending'},
-                        xaxis_title='Custo (R$)',
-                        yaxis_title='Produto ponderado')
+                         title="Custo ponderado por produto",
+                         orientation="h",
+                         text='custo')
+        fig_peso.update_layout(yaxis={'categoryorder': 'total ascending'},
+                               xaxis_title='Custo (R$)',
+                               yaxis_title='Produto ponderado')
 
         st.plotly_chart(fig_peso, use_container_width=True)
 
@@ -92,7 +95,7 @@ else:
     st.markdown("As estatísticas a seguir mostram qual o valor da cesta básica nos últimos 7, 15 e 30 dias respectivamente, abaixo encontram-se as variações em reais dos últimos 14, 30 e 60 dias respectivamente")
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Média 7 dias",f'R$ {last7.round(2)}',  dif14_7.round(2))
+    col1.metric("Média 7 dias", f'R$ {last7.round(2)}', dif14_7.round(2))
     col2.metric("Média 15 dias", f'R$ {last15.round(2)}', dif30_15.round(2))
     col3.metric("Média 30 dias", f'R$ {mean30.round(2)}', dif60_30.round(2))
 
