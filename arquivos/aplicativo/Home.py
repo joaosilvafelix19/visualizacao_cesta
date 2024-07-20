@@ -10,22 +10,18 @@ from PIL import Image
     
 #path = '/arquivos/aplicativo/imagens'
 
-# Define root and image path based on the environment
-root = os.getcwd()
-if root[0] == '/':
-    root = '/app/visualizacao_cesta/'  # Path for deployed environment
+# Define the relative path to the image file
+relative_path = 'arquivos/aplicativo/imagens/labimec.jpg'
+
+# Get the absolute path of the image file
+img_path = os.path.join(os.getcwd(), relative_path)
+
+# Check if the image exists
+if os.path.exists(img_path):
+    img = Image.open(img_path)
 else:
-    root = os.path.abspath('arquivos/aplicativo/imagens')  # Path for local development
-
-path = 'labimec.jpg'
-
-# Construct full image path
-img_path = os.path.join(root, path)
-
-#from PIL import Image
-img = Image.open(f'{root}{path}/labimec.jpg')
-
-print(f'{root}{path}/labimec.jpg')
+    st.error(f"Image file not found at {img_path}")
+    img = None  # Set img to None if the file is not found
 
 st.set_page_config(
     page_title = "Cesta Básica LABIMEC",
