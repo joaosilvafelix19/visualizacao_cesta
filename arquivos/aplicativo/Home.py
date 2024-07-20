@@ -15,6 +15,8 @@ if root[0] == '/':
     root = '/app/visualizacao_cesta'
 else:
     root = os.path.abspath('../..')
+    
+path = '/arquivos/aplicativo/imagens'
 
 #from PIL import Image
 img = Image.open(f'{root}{path}/labimec.jpg')
