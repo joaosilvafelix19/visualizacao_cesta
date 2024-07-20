@@ -12,9 +12,10 @@ from PIL import Image
 # Determine the root directory
 root = os.getcwd()
 if root[0] == '/':
-    root = '/app/visualizacao_cesta'
+    root = '/app/visualizacao_cesta/'
 else:
     root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
+
 
 # Set the path to the image
 path = os.path.join(root, 'arquivos', 'aplicativo', 'imagens', 'labimec.jpg')
