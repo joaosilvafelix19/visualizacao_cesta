@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from PIL import Image
 
-#root = os.getcwd()
+root = os.getcwd()
 if root[0] == '/':
     root = '/app/visualizacao_cesta/'
 #else:
