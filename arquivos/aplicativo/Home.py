@@ -2,12 +2,25 @@ import streamlit as st
 import os
 from PIL import Image
 
+#root = os.getcwd()
+#if root[0] == '/':
+#    root = '/app/visualizacao_cesta/'
+#else:
+##    root = os.path.abspath('../..')
+    
+#path = '/arquivos/aplicativo/imagens'
+
+# Define root and image path based on the environment
 root = os.getcwd()
 if root[0] == '/':
-    root = '/app/visualizacao_cesta/'
-#else:
-    root = os.path.abspath('../..')
-path = '/arquivos/aplicativo/imagens'
+    root = '/app/visualizacao_cesta/'  # Path for deployed environment
+else:
+    root = os.path.abspath('arquivos/aplicativo/imagens')  # Path for local development
+
+path = 'labimec.jpg'
+
+# Construct full image path
+img_path = os.path.join(root, path)
 
 #from PIL import Image
 img = Image.open(f'{root}{path}/labimec.jpg')
