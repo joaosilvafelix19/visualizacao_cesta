@@ -16,8 +16,9 @@ import plotly.graph_objects as go
 #path = '/arquivos/aplicativo/dados'
 
 # Define the path to the data
+# Define the path to the data
 root = 'C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta'
-path = 'arquivos/aplicativo/dados'
+path = 'arquivos\\aplicativo\\dados'
 data_path = os.path.join(root, path, 'dados_jp.xlsx')
 
 # Importando os dados da cesta
