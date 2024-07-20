@@ -10,13 +10,10 @@ from PIL import Image
 #path = '/arquivos/aplicativo/imagens'
 
 # Determine the root directory
-root = os.getcwd()
-if root[0] == '/':
-    root = '/app/visualizacao_cesta'
-else:
-    root = os.path.abspath('../..')
-    
-path = '/arquivos/aplicativo/imagens'
+# Determine the root directory for Windows
+root = os.path.abspath('C:/Users/joaos/Documents/GitHub/visualizacao_cesta')
+path = 'arquivos/aplicativo/imagens'
+img_path = os.path.join(root, path, 'labimec.jpg')
 
 #from PIL import Image
 img = Image.open(f'{root}{path}/labimec.jpg')
