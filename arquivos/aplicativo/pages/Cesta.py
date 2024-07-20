@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 # Definindo diretório
 root = os.getcwd()
 if root[0] == '/':
-    root = '/app/visualizacao_cesta/'
+    root = '/GitHub/visualizacao_cesta/'
 else:
     root = os.path.abspath('../..')
 path = '/arquivos/aplicativo/dados'

@@ -12,7 +12,7 @@ import os
 # Importando os dados e fazendo algumas manipulações
 root = os.getcwd()
 if root[0] == '/':
-    root = '/app/visualizacao_cesta/'
+    root = '/GitHub/visualizacao_cesta/'
 else:
     root = os.path.abspath('../..')
 path = '/arquivos/aplicativo/dados'
