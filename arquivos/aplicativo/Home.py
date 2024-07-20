@@ -54,7 +54,15 @@ with col1:
              **E-mail:** labimecufpb@gmail.com
              """)
     
-with col2:
-    st.image(f'{root}{path}/labimec.jpg')
+#with col2:
+#    st.image(f'{root}{path}/labimec.jpg')
             
+#st.caption("Compreende a região metropolitana de João pessoa: Bayeux, Cabedelo, Conde, Cruz do Espírito Santo, João Pessoa, Lucena, Mamanguape, Rio Tinto, Santa Rita, Alhandra, Caaporã e Pitimbu. - Lei complementar nº. 93 de 11 de dezembro de 2009")
+
+with col2:
+    if img is not None:
+        st.image(img)
+    else:
+        st.error("Unable to display image.")
+
 st.caption("Compreende a região metropolitana de João pessoa: Bayeux, Cabedelo, Conde, Cruz do Espírito Santo, João Pessoa, Lucena, Mamanguape, Rio Tinto, Santa Rita, Alhandra, Caaporã e Pitimbu. - Lei complementar nº. 93 de 11 de dezembro de 2009")
