@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 # Definindo diretório
 root = r'C:\Users\joaos\Documents\GitHub\visualizacao_cesta'
-path = r'\arquivos\aplicativo\dados'
+path = r'arquivos\aplicativo\dados'
 
 # Montando o caminho do arquivo
 file_path = os.path.join(root, path, 'dados_jp.xlsx')
@@ -69,40 +69,4 @@ with col_b:
 
     st.plotly_chart(fig_peso, use_container_width=True)
 
-#--------------------------------------------------------------------------------
-# Estatísticas Descritivas
-#--------------------------------------------------------------------------------
-last7 = cesta.tail(7)
-last7 = last7['media_cesta'].mean()
-last14 = cesta.tail(14)
-mean14 = last14['media_cesta'].mean()
-dif14_7 = mean14 - last7
-
-last15 = cesta.tail(15)
-last15 = last15['media_cesta'].mean()
-
-last30 = cesta.tail(30)
-mean30 = last30['media_cesta'].mean()
-dif30_15 = mean30 - last15
-
-min_last30 = last30['media_cesta'].min()
-medi_last30 = last30['media_cesta'].median()
-max_last30 = last30['media_cesta'].max()
-
-last60 = cesta.tail(60)
-mean60 = last60['media_cesta'].mean()
-dif60_30 = mean60 - mean30
-
-st.markdown("As estatísticas a seguir mostram qual o valor da cesta básica nos últimos 7, 15 e 30 dias respectivamente, abaixo encontram-se as variações em reais dos últimos 14, 30 e 60 dias respectivamente")
-
-col1, col2, col3 = st.columns(3)
-col1.metric("Média 7 dias", f'R$ {last7.round(2)}', dif14_7.round(2))
-col2.metric("Média 15 dias", f'R$ {last15.round(2)}', dif30_15.round(2))
-col3.metric("Média 30 dias", f'R$ {mean30.round(2)}', dif60_30.round(2))
-
-st.markdown("Adiante é mostrado qual os valores mínimo, da mediana e o valor máximo do custo estimado da cesta básica em João Pessoa nos últimos 30 dias")
-
-col4, col5, col6 = st.columns(3)
-col4.metric("Mínimo 30 dias", f"R$ {min_last30.round(2)}")
-col5.metric("Mediana 30 dias", f"R$ {medi_last30.round(2)}")
-col6.metric("Máximo 30 dias", f"R$ {max_last30.round(2)}")
+#-------------------------------------------------------------------
