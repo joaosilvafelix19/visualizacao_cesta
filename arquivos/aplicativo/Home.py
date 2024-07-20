@@ -3,22 +3,11 @@ import os
 from PIL import Image
 
 #root = os.getcwd()
-#if root[0] == '/':
-#    root = '/app/visualizacao_cesta/'
-##else:
-#    root = os.path.abspath('../..')
-#path = '/arquivos/aplicativo/imagens'
-
-# Determine the root directory
-root = os.getcwd()
 if root[0] == '/':
     root = '/app/visualizacao_cesta/'
-else:
-    root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
-
-# Set the path to the image
-path = os.path.join(root, 'arquivos', 'aplicativo', 'imagens', 'labimec.jpg')
-
+#else:
+    root = os.path.abspath('../..')
+path = '/arquivos/aplicativo/imagens'
 
 #from PIL import Image
 img = Image.open(f'{root}{path}/labimec.jpg')
