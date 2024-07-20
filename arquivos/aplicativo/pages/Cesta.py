@@ -7,15 +7,30 @@ import plotly.graph_objects as go
 # Importando os dados e fazendo algumas manipulações
 
 # Definindo diretório
-root = os.getcwd()
-if root[0] == '/':
-    root = '/GitHub/visualizacao_cesta/'
-else:
-    root = os.path.abspath('../..')
-path = '/arquivos/aplicativo/dados'
+#root = os.getcwd()
+#if root[0] == '/':
+#    root = '/GitHub/visualizacao_cesta/'
+##else:
+#    root = os.path.abspath('../..')
+#path = '/arquivos/aplicativo/dados'
+
+# Definindo diretório
+root = r'C:\Users\joaos\Documents\GitHub\visualizacao_cesta'
+path = r'\arquivos\aplicativo\dados'
+
+# Montando o caminho do arquivo
+file_path = os.path.join(root, path, 'dados_jp.xlsx')
+print(f"Attempting to read file from: {file_path}")
 
 # Importando os dados da cesta
-cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx")
+try:
+    cesta = pd.read_excel(file_path)
+except Exception as e:
+    st.error(f"Error reading the file: {e}")
+    st.stop()
+
+# Importando os dados da cesta
+#cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx")
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 df30 = df.tail(1)
 
