@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 # Define the correct root path
 root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta/'
 path = 'arquivos/aplicativo/dados/'
-cesta_path = os.path.join(root, path, 'dados_jp.csv')  # Adjusted path
+cesta_path = os.path.join(root, path, 'dados_jp.xlsx')  # Adjusted path
 
 # Print the path to check if it is correct
 st.write(f"Root path: {root}")
