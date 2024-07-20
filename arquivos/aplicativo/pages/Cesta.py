@@ -4,16 +4,6 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Importando os dados e fazendo algumas manipulações
-
-# Definindo diretório
-#root = os.getcwd()
-#if root[0] == '/':
-#    root = '/GitHub/visualizacao_cesta/'
-##else:
-#    root = os.path.abspath('../..')
-#path = '/arquivos/aplicativo/dados'
-
 # Definindo diretório
 root = r'C:\Users\joaos\Documents\GitHub\visualizacao_cesta'
 path = r'\arquivos\aplicativo\dados'
@@ -29,8 +19,6 @@ except Exception as e:
     st.error(f"Error reading the file: {e}")
     st.stop()
 
-# Importando os dados da cesta
-#cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx")
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 df30 = df.tail(1)
 
@@ -108,7 +96,7 @@ dif60_30 = mean60 - mean30
 st.markdown("As estatísticas a seguir mostram qual o valor da cesta básica nos últimos 7, 15 e 30 dias respectivamente, abaixo encontram-se as variações em reais dos últimos 14, 30 e 60 dias respectivamente")
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Média 7 dias",f'R$ {last7.round(2)}',  dif14_7.round(2))
+col1.metric("Média 7 dias", f'R$ {last7.round(2)}', dif14_7.round(2))
 col2.metric("Média 15 dias", f'R$ {last15.round(2)}', dif30_15.round(2))
 col3.metric("Média 30 dias", f'R$ {mean30.round(2)}', dif60_30.round(2))
 
@@ -118,4 +106,3 @@ col4, col5, col6 = st.columns(3)
 col4.metric("Mínimo 30 dias", f"R$ {min_last30.round(2)}")
 col5.metric("Mediana 30 dias", f"R$ {medi_last30.round(2)}")
 col6.metric("Máximo 30 dias", f"R$ {max_last30.round(2)}")
-
