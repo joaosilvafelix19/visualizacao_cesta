@@ -4,18 +4,12 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 
-import streamlit as st
-import pandas as pd
-import os
-import plotly.express as px
-import plotly.graph_objects as go
-
 # Importando os dados e fazendo algumas manipulações
 
 # Definindo diretório
 root = os.getcwd()
 if root[0] == '/':
-    root = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
+    root = '/Users/joaos/Documents/GitHub/visualizacao_cesta'
 else:
     root = os.path.abspath('../..')
 path = '/arquivos/aplicativo/dados'
