@@ -17,6 +17,11 @@ st.write(f"Full path: {cesta_path}")
 # Check if the file exists
 if not os.path.exists(cesta_path):
     st.error(f"File not found: {cesta_path}")
+    
+    # Print the directory contents to help with debugging
+    directory = os.path.dirname(cesta_path)
+    st.write(f"Directory: {directory}")
+    st.write("Files in directory:", os.listdir(directory) if os.path.isdir(directory) else "Directory does not exist")
 else:
     # Importing data and performing manipulations
     cesta = pd.read_excel(cesta_path)
