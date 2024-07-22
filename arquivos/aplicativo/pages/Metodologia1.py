@@ -3,11 +3,8 @@ import pandas as pd
 from st_aggrid import AgGrid
 import os
 
-# Path to the Excel file in your GitHub repository
-relative_path = 'arquivos/aplicativo/dados/dados_jp.xlsx'
-
-# Construct the absolute path based on the current working directory
-file_path = os.path.join(os.getcwd(), relative_path)
+# Full local path to the Excel file
+file_path = r'C:\Users\joaos\Documents\GitHub\visualizacao_cesta\arquivos\aplicativo\dados\dados_jp.xlsx'
 
 # Print the file path to verify it
 st.write(f"File path: {file_path}")
