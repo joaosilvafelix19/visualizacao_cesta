@@ -1,5 +1,4 @@
 import streamlit as st
-import openpyxl
 import pandas as pd
 import os
 
@@ -14,6 +13,7 @@ file_path = os.path.join(os.getcwd(), relative_path)
 # Check if the file exists
 if os.path.exists(file_path):
     try:
+        # Specify the engine to use for reading Excel files
         df = pd.read_excel(file_path, engine='openpyxl')
         st.write("Dados carregados com sucesso!")
         st.write(df.head())  # Display the first few rows of the dataframe
