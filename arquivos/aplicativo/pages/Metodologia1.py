@@ -4,7 +4,7 @@ from st_aggrid import AgGrid
 import os
 
 # Definindo o caminho absoluto do arquivo
-file_path = r"C:\Users\joaos\Documents\GitHub\visualizacao_cesta\arquivos\aplicativo\dados\dados_jp.xlsx"
+file_path = r"C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados/dados_jp.xlsx"
 
 # Imprimindo o caminho do arquivo para depuração
 st.write(f"Caminho do arquivo: {file_path}")
