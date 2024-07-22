@@ -1,5 +1,8 @@
-import os
+import streamlit as st
 import pandas as pd
+import os
+import plotly.express as px
+import plotly.graph_objects as go
 
 # Path and file name
 path = os.path.abspath('dados')
