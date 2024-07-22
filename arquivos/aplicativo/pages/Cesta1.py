@@ -14,5 +14,3 @@ excel_file = os.path.join(path, file_name)
 # Read the Excel file into a DataFrame
 df = pd.read_excel(excel_file)
 
-# Display the DataFrame in the Streamlit app
-st.write(df)
