@@ -4,12 +4,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 import os
 
-# Obter o caminho absoluto para a pasta "dados"
+# Define the path to the "dados" folder and the Excel file name
 path = os.path.abspath('dados')
-
-# Nome do arquivo Excel
 file_name = 'dados_jp.xlsx'
 
-# Combinar o caminho com o nome do arquivo para obter o caminho completo
+# Combine the path and file name to get the full file path
 excel_file = os.path.join(path, file_name)
 
+# Read the Excel file into a DataFrame
+df = pd.read_excel(excel_file)
+
+# Display the DataFrame in the Streamlit app
+st.write(df)
