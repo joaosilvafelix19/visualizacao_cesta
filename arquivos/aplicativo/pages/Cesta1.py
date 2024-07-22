@@ -1,23 +1,15 @@
 import streamlit as st
 import pandas as pd
-import os
 
 st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 
-# Define the relative path to the Excel file
-relative_path = 'arquivos/aplicativo/dados/dados_jp.xlsx'
+# URL to the raw Excel file in GitHub
+url = 'https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/dados_jp.xlsx'
 
-# Get the absolute path of the Excel file
-file_path = os.path.join(os.getcwd(), relative_path)
-
-# Check if the file exists
-if os.path.exists(file_path):
-    try:
-        # Use pandas to read the Excel file without specifying the engine
-        df = pd.read_excel(file_path)
-        st.write("Dados carregados com sucesso!")
-        st.write(df.head())  # Display the first few rows of the dataframe
-    except Exception as e:
-        st.error(f"Ocorreu um erro ao carregar os dados: {e}")
-else:
-    st.error(f"O arquivo especificado não foi encontrado no caminho {file_path}.")
+try:
+    # Read the Excel file directly from GitHub
+    df = pd.read_excel(url)
+    st.write("Dados carregados com sucesso!")
+    st.write(df.head())  # Display the first few rows of the dataframe
+except Exception as e:
+    st.error(f"Ocorreu um erro ao carregar os dados: {e}")
