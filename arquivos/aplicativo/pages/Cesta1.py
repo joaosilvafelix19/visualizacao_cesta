@@ -6,7 +6,7 @@ import os
 
 # Define o caminho para o diretório onde o arquivo Excel está localizado
 # Certifique-se de ajustar o caminho conforme a estrutura do seu projeto
-path = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta'
+path = 'C:/Users/joaos/Documents/GitHub/visualizacao_cesta/dados'
 file_name = 'dados_jp.xlsx'
 excel_file = os.path.join(path, file_name)
 
