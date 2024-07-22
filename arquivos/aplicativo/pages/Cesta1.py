@@ -15,11 +15,4 @@ print(f"File Name: {file_name}")
 print(f"Full Path to File: {excel_file}")
 
 # Reading the Excel file
-try:
-    cesta = pd.read_excel(excel_file)
-    print("File read successfully")
-except FileNotFoundError as e:
-    print(f"FileNotFoundError: {e}")
-except Exception as e:
-    print(f"An error occurred: {e}")
-
+cesta = pd.read_excel(excel_file)
