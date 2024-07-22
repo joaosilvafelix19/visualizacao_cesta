@@ -14,4 +14,4 @@ file_name = 'dados_jp.xlsx'
 excel_file = os.path.join(path, file_name)
 
 # Importando os dados
-pnad = pd.read_excel(excel_file)
+dados = pd.read_excel(excel_file)
