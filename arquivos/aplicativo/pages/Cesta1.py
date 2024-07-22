@@ -16,9 +16,3 @@ cesta = pd.read_excel(excel_file)
 
 # Importando os dados
 cesta = pd.read_excel(excel_file)
-
-
-# Importando os dados da cesta
-##cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx")
-##df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
-#f30 = df.tail(1)
