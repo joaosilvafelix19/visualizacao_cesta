@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import os
 import plotly.express as px
-import plotly.graph_objects as go
+#import plotly.graph_objects as go
 
 # Path and file name
 path = os.path.abspath('dados')
