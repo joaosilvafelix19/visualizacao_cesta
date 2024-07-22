@@ -7,14 +7,20 @@ import os
 st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 
 # Importando os dados
-data_path = "C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados"  # Relative path
+data_path = "C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados"  # Absolute path
 
-try:
-    os.chdir(data_path)
-    # Load your data here, for example:
-    df = pd.read_csv("dados_jp.xlsx")
-    st.write("Dados carregados com sucesso!")
-except FileNotFoundError:
-    st.error(f"O caminho especificado não foi encontrado. Verifique se o diretório {data_path} existe no caminho relativo.")
-
-# Your plotting code here
+# Check if the path exists
+if not os.path.exists(data_path):
+    st.error(f"O caminho especificado não foi encontrado. Verifique se o diretório {data_path} existe.")
+else:
+    try:
+        os.chdir(data_path)
+        # Check if the file exists
+        if os.path.exists("dados_jp.xlsx"):
+            df = pd.read_excel("dados_jp.xlsx")  # Corrected to read Excel file
+            st.write("Dados carregados com sucesso!")
+            st.write(df.head())  # Display the first few rows of the dataframe
+        else:
+            st.error("O arquivo 'dados_jp.xlsx' não foi encontrado no diretório especificado.")
+    except Exception as e:
+        st.error(f"Ocorreu um erro ao carregar os dados: {e}")
