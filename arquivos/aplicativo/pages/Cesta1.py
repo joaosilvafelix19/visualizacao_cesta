@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import os
 import plotly.express as px
 import plotly.graph_objects as go
@@ -23,6 +22,16 @@ except FileNotFoundError as e:
     print(f"FileNotFoundError: {e}")
 except Exception as e:
     print(f"An error occurred: {e}")
-    
-df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
-df30 = df.tail(1)
+
+# Check if cesta is not empty and has enough columns
+if not cesta.empty and cesta.shape[1] > 50:
+    try:
+        df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+        df30 = df.tail(1)
+        print("Data processed successfully")
+    except IndexError as e:
+        print(f"IndexError: {e}")
+    except Exception as e:
+        print(f"An error occurred while processing data: {e}")
+else:
+    print("DataFrame is empty or does not have enough columns")
