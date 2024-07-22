@@ -15,6 +15,6 @@ try:
     df = pd.read_csv("dados_jp.xlsx")
     st.write("Dados carregados com sucesso!")
 except FileNotFoundError:
-    st.error("O caminho especificado não foi encontrado. Verifique se o diretório 'dados' existe no caminho relativo.")
+    st.error(f"O caminho especificado não foi encontrado. Verifique se o diretório {data_path} existe no caminho relativo.")
 
 # Your plotting code here
