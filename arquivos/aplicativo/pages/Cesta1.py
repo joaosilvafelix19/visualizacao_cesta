@@ -1,18 +1,21 @@
-import streamlit as st
-import pandas as pd
 import os
+import pandas as pd
 
-# Obter o caminho absoluto para a pasta "dados"
+# Path and file name
 path = os.path.abspath('dados')
-
-# Nome do arquivo Excel
 file_name = 'dados_jp.xlsx'
-
-# Combinar o caminho com o nome do arquivo para obter o caminho completo
 excel_file = os.path.join(path, file_name)
 
-# Ler o Excel em um DataFrame
-cesta = pd.read_excel(excel_file)
+# Debugging output
+print(f"Path: {path}")
+print(f"File Name: {file_name}")
+print(f"Full Path to File: {excel_file}")
 
-# Importando os dados
-cesta = pd.read_excel(excel_file)
+# Reading the Excel file
+try:
+    cesta = pd.read_excel(excel_file)
+    print("File read successfully")
+except FileNotFoundError as e:
+    print(f"FileNotFoundError: {e}")
+except Exception as e:
+    print(f"An error occurred: {e}")
