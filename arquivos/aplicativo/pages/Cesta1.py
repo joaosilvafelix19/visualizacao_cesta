@@ -13,8 +13,8 @@ file_path = os.path.join(os.getcwd(), relative_path)
 # Check if the file exists
 if os.path.exists(file_path):
     try:
-        # Specify the engine to use for reading Excel files
-        df = pd.read_excel(file_path, engine='openpyxl')
+        # Use pandas to read the Excel file without specifying the engine
+        df = pd.read_excel(file_path)
         st.write("Dados carregados com sucesso!")
         st.write(df.head())  # Display the first few rows of the dataframe
     except Exception as e:
