@@ -6,6 +6,9 @@ import os
 # Definindo o caminho absoluto do arquivo
 file_path = r"C:\Users\joaos\Documents\GitHub\visualizacao_cesta\arquivos\aplicativo\dados\dados_jp.xlsx"
 
+# Imprimindo o caminho do arquivo para depuração
+st.write(f"Caminho do arquivo: {file_path}")
+
 # Verificando se o arquivo existe
 if not os.path.isfile(file_path):
     st.error(f"Arquivo não encontrado: {file_path}")
