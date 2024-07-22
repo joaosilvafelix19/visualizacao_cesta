@@ -8,7 +8,7 @@ import os
 path = os.path.abspath('dados')
 
 # Name of the Excel file
-file_name = 'dados_jp.xlsx'
+file_name = 'dados_jp'
 
 # Combine path and filename for the complete Excel file path
 excel_file = os.path.join(path, file_name)
