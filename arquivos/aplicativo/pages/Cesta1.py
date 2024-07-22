@@ -4,8 +4,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import os
 
-# Obter o caminho absoluto para a pasta "dados"
-path = os.path.abspath('dados')
+# Caminho absoluto para a pasta "dados"
+path = r'C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados'
 
 # Nome do arquivo Excel
 file_name = 'dados_jp.xlsx'
