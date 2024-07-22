@@ -1,19 +1,22 @@
 import streamlit as st
-import plotly.express as px
-import plotly.graph_objects as go
 import pandas as pd
+import os
 
 st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 
-# Importando os dados
-data_path = "C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados/dados_jp.xlsx"
+# Define the relative path to the Excel file
+relative_path = 'arquivos/aplicativo/dados/dados_jp.xlsx'
 
-try:
-    # Load the data directly using the full path
-    df = pd.read_excel(data_path)
-    st.write("Dados carregados com sucesso!")
-    st.write(df.head())  # Display the first few rows of the dataframe
-except FileNotFoundError:
-    st.error(f"O arquivo especificado não foi encontrado. Verifique se o caminho {data_path} está correto.")
-except Exception as e:
-    st.error(f"Ocorreu um erro ao carregar os dados: {e}")
+# Get the absolute path of the Excel file
+file_path = os.path.join(os.getcwd(), relative_path)
+
+# Check if the file exists
+if os.path.exists(file_path):
+    try:
+        df = pd.read_excel(file_path)
+        st.write("Dados carregados com sucesso!")
+        st.write(df.head())  # Display the first few rows of the dataframe
+    except Exception as e:
+        st.error(f"Ocorreu um erro ao carregar os dados: {e}")
+else:
+    st.error(f"O arquivo especificado não foi encontrado no caminho {file_path}.")
