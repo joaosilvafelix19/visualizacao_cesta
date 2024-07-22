@@ -1,23 +1,27 @@
 import streamlit as st
+from openpyxl import load_workbook
 import pandas as pd
 from st_aggrid import AgGrid
-import os
 
 # Full local path to the Excel file
 file_path = r'C:\Users\joaos\Documents\GitHub\visualizacao_cesta\arquivos\aplicativo\dados\dados_jp.xlsx'
 
-# Print the file path to verify it
-st.write(f"File path: {file_path}")
-
-# Function to load data
-@st.cache_data
+# Function to load data using openpyxl
 def load_data():
     try:
-        # Attempt to read the Excel file
-        data = pd.read_excel(file_path)
+        # Load the workbook and select the active sheet
+        wb = load_workbook(file_path, data_only=True)
+        sheet = wb.active
+        
+        # Convert sheet to DataFrame
+        data = pd.DataFrame(sheet.values)
+        
+        # Assuming the first row is the header
+        data.columns = data.iloc[0]
+        data = data[1:]
+        
         return data
     except Exception as e:
-        # Print error message if file reading fails
         st.error(f"Error loading the Excel file: {e}")
         return pd.DataFrame()  # Return an empty DataFrame in case of error
 
