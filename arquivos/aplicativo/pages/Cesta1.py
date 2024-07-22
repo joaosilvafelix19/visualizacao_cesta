@@ -6,4 +6,5 @@ import os
 
 st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 
-print(getwd())
+# Importando os dados 
+os.chdir("C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados")
