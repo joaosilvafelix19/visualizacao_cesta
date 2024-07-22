@@ -3,7 +3,5 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Title of the app
-st.title('Cesta Básica Data Visualization')
-
+# Obter o caminho absoluto para a pasta "dados"
 path = os.path.abspath('dados')
