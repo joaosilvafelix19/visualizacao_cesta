@@ -7,4 +7,11 @@ import os
 # Obter o caminho absoluto para a pasta "dados"
 path = os.path.abspath('dados')
 
-st.write(path)
+# Nome do arquivo Excel
+file_name = 'dados_jp.xlsx'
+
+# Combinar o caminho com o nome do arquivo para obter o caminho completo
+excel_file = os.path.join(path, file_name)
+
+# Ler o Excel em um DataFrame
+cesta = pd.read_excel(excel_file)
