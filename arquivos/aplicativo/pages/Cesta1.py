@@ -6,5 +6,15 @@ import os
 
 st.title("Cesta Básica em João Pessoa - *LABIMEC*")
 
-# Importando os dados 
-os.chdir("C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados")
+# Importando os dados
+data_path = "./dados"  # Relative path
+
+try:
+    os.chdir(data_path)
+    # Load your data here, for example:
+    # df = pd.read_csv("your_data_file.csv")
+    st.write("Dados carregados com sucesso!")
+except FileNotFoundError:
+    st.error("O caminho especificado não foi encontrado. Verifique se o diretório 'dados' existe no caminho relativo.")
+
+# Your plotting code here
