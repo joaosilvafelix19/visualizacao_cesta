@@ -15,7 +15,7 @@ else:
 path = '/arquivos/aplicativo/dados'
 
 # Importando os dados da cesta
-cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx")
+cesta = pd.read_excel(f"{root}{path}/dados_jp1.xlsx")
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 df30 = df.tail(1)
 
