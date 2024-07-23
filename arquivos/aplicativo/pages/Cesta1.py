@@ -19,6 +19,4 @@ except FileNotFoundError:
 except Exception as e:
   print(f"An error occurred: {e}")
 
-# Importando os dados da cesta
-df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
-df30 = df.tail(1)
+st.write(cesta)
