@@ -11,10 +11,4 @@ try:
     cesta = pd.read_excel(data_path)
     st.write("File loaded successfully!")
     st.write(cesta.head())  # Print the first 5 rows of the DataFrame
-except FileNotFoundError:
-    print(f"File not found: {data_path}")
-    print("Make sure the file exists at the specified location.")
-except Exception as e:
-    print(f"An error occurred: {e}")
-
-st.write("Code executed.")
+    st.write("Code executed.")
