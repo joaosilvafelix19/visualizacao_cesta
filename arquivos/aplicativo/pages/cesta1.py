@@ -5,8 +5,12 @@ import plotly.graph_objects as go
 
 import os
 
-# Define a test path
-test_path = 'C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta\\arquivos\\aplicativo\\dados\\dados_jp1.xlsx'
+# URL of the Excel file on GitHub
+url = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/cesta.csv?token=GHSAT0AAAAAACLI5ZLTD2HX34H277BZ45O2ZVAH6NA"
 
-# Check if the test file exists
-st.write(print(os.path.exists(test_path)))
+# Importing the data directly from GitHub
+cesta = pd.read_csv(url)
+
+# Manipulating the data
+#df = cesta.iloc[:, [6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+#df30 = df.tail(1)
