@@ -1,13 +1,15 @@
 import streamlit as st
 import pandas as pd
-import os
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Importando os dados e fazendo algumas manipulações
+# URL to the raw Excel file on GitHub
+data_url = "https://github.com/joaosilvafelix19/visualizacao_cesta/blob/main/arquivos/aplicativo/dados/dados_jp1.xlsx"
 
-# Define the full path to the Excel file
-data_path = "C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta\\arquivos\\aplicativo\\dados\\dados_jp1.xlsx"  # Adjust backslashes for your OS
+# Read the Excel file
+cesta = pd.read_excel(data_url)
 
-cesta = pd.read_excel(data_path)
+# Perform your data manipulations here
+# Example: Display the first few rows of the dataset
+st.write(cesta.head())
 
