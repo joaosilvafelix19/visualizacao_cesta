@@ -1,35 +1,18 @@
-import streamlit as st
+import os
 import pandas as pd
-import requests
-import io
 import plotly.express as px
 import plotly.graph_objects as go
 
+# Define the full path to the Excel file
+data_path = "C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta\\arquivos\\aplicativo\\dados\\dados_jp1.xlsx"  # Adjust backslashes for your OS
 
-# URL to the raw Excel file on GitHub
-data_url = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/dados_jp1.xlsx"
-
+# Load the Excel file using the full path
 try:
-    # Download the file from GitHub
-    response = requests.get(data_url)
-    response.raise_for_status()  # Check that the request was successful
-    
-    # Read the Excel file into a DataFrame
-    cesta = pd.read_excel(io.BytesIO(response.content))
-    
-    # Perform your data manipulations here
-    # Example: Display the first few rows of the dataset
-    st.write(cesta.head())
-
-    # Your existing visualization code here
-    # Example: Creating a simple plot
-    fig = px.line(cesta, x="Date", y="Price", title="Price over Time")
-    st.plotly_chart(fig)
-
-except requests.exceptions.RequestException as e:
-    st.error(f"Failed to download the file: {e}")
-    st.stop()
-
+  cesta = pd.read_excel(data_path)
+  print("File loaded successfully!")
+except FileNotFoundError:
+  print(f"File not found: {data_path}")
+  print("Make sure the file exists at the specified location.")
 except Exception as e:
-    st.error(f"An error occurred: {e}")
-    st.stop()
+  print(f"An error occurred: {e}")
+  
