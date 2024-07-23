@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 # Importando os dados e fazendo algumas manipulações
-file_path = "C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta\\arquivos\\aplicativo\\dados\\dados_jp1.xlsx"
+file_path = "C:/Users/joaos/Documents/GitHub/visualizacao_cesta/arquivos/aplicativo/dados/dados_jp1.xlsx"
 
 # Importando os dados da cesta
 cesta = pd.read_excel(file_path)
