@@ -9,8 +9,8 @@ data_path = "C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta\\arquivos\\
 # Load the Excel file using the full path
 try:
     cesta = pd.read_excel(data_path)
-    print("File loaded successfully!")
-    print(cesta.head())  # Print the first 5 rows of the DataFrame
+    st.write("File loaded successfully!")
+    st.write(cesta.head())  # Print the first 5 rows of the DataFrame
 except FileNotFoundError:
     print(f"File not found: {data_path}")
     print("Make sure the file exists at the specified location.")
