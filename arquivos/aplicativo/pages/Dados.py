@@ -14,10 +14,13 @@ else:
     root = os.path.abspath('../..')
 path = '/arquivos/aplicativo/dados'
 
+url_cesta = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/cesta.csv"
+url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
+
 # Importando os dados dos preços não ponerados
-precos = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="precos").round(2)
+precos = pd.read_csv(url_precos).round(2)
 precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
-precos_ponderados = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="cesta").round(2)
+precos_ponderados = pd.read_csv(url_cesta).round(2)
 precos_ponderados['data'] = precos_ponderados['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
 
 st.title("Download dos dados")
