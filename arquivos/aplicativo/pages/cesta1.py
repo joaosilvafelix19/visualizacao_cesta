@@ -3,11 +3,11 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Define the path to the Excel file
-file_path = 'https://github.com/joaosilvafelix19/visualizacao_cesta/blob/main/arquivos/aplicativo/dados/dados_jp1.xlsx'
+# Importando os dados e fazendo algumas manipulações
+file_path = "C:\\Users\\joaos\\Documents\\GitHub\\visualizacao_cesta\\arquivos\\aplicativo\\dados\\dados_jp1.xlsx"
 
 # Importando os dados da cesta
-cesta = pd.read_excel("dados_jp1.xlsx")
+cesta = pd.read_excel(file_path)
 df = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 df30 = df.tail(1)
 
