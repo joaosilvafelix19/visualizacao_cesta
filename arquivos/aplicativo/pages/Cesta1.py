@@ -15,4 +15,5 @@ except FileNotFoundError:
   print("Make sure the file exists at the specified location.")
 except Exception as e:
   print(f"An error occurred: {e}")
-  
+
+st.write(cesta.head())
