@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 
 
 # URL to the raw Excel file on GitHub
-data_url = "https://github.com/joaosilvafelix19/visualizacao_cesta/blob/main/arquivos/aplicativo/dados/dados_jp1.xlsx"
+data_url = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/dados_jp1.xlsx"
 
 try:
     # Download the file from GitHub
