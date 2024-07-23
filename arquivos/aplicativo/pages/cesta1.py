@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import os
 
 # URL of the Excel file on GitHub
-url = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/cesta.csv?token=GHSAT0AAAAAACLI5ZLTD2HX34H277BZ45O2ZVAH6NA"
+url = "https://github.com/joaosilvafelix19/visualizacao_cesta/blob/main/arquivos/aplicativo/dados/cesta.csv"
 
 # Importing the data directly from GitHub
 cesta = pd.read_csv(url)
