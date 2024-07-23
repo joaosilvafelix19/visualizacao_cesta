@@ -5,16 +5,11 @@ from st_aggrid import AgGrid
 
 import os
 
-# Definindo diretório
-root = os.getcwd()
-if root[0] == '/':
-    root = '/GitHub/visualizacao_cesta/'
-else:
-    root = os.path.abspath('../..')
-path = '/arquivos/aplicativo/dados'
+url = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/cesta.csv"
 
 # Importando os dados dos preços não ponerados
-cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="cesta")
+cesta = pd.read_csv(url)
+#cesta = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="cesta")
 
 # Selecionando apenas as colunas das médias
 cesta = cesta.iloc[:,[6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
