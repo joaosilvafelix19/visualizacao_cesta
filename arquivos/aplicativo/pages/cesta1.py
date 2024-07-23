@@ -11,6 +11,8 @@ url = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/mai
 # Importing the data directly from GitHub
 cesta = pd.read_csv(url)
 
+st.write(cesta.head())
+
 # Manipulating the data
 #df = cesta.iloc[:, [6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 #df30 = df.tail(1)
