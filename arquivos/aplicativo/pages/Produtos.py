@@ -14,7 +14,7 @@ url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_ce
 
 # Importando os dados dos preços não ponerados
 precos = pd.read_csv(url_precos)
-precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
+precos['data'] = pd.to_datetime(precos['data'], format='%d/%m/%Y')
 dff = pd.read_csv(url_precos)
 
 # Selecionando apenas a data e os valores referentes as médias dos produtos
