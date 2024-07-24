@@ -8,17 +8,20 @@ import time
 from st_aggrid import AgGrid
 import os
 
-
 # Importando os dados e fazendo algumas manipulações
 url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
-# Importando os dados dos preços não ponerados
+# Importando os dados dos preços não ponderados
 precos = pd.read_csv(url_precos)
-precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
-dff = pd.read_csv(url_precos)
 
-# Selecionando apenas a data e os valores referentes as médias dos produtos
-df = precos.iloc[:,[1,2,6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+# Convertendo a coluna 'data' para datetime
+precos['data'] = pd.to_datetime(precos['data'], errors='coerce')
+
+# Aplicando strftime para formatar as datas
+precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y') if pd.notnull(x) else '')
+
+# Selecionando apenas a data e os valores referentes às médias dos produtos
+df = precos.iloc[:, [1, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 
 # Selecionando os últimos 30 dias
 df = df.tail(30)
