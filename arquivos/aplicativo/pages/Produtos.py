@@ -1,24 +1,20 @@
-import streamlit as st
-import numpy as np
-import pandas as pd
-import os
-import plotly.express as px
-import plotly.graph_objects as go
-import time
-from st_aggrid import AgGrid
-import os
-
-
 # Importando os dados e fazendo algumas manipulações
 url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
-# Importando os dados dos preços não ponerados
+# Importando os dados dos preços não ponderados
 precos = pd.read_csv(url_precos)
-precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
+
+# Convertendo a coluna 'data' para datetime
+precos['data'] = pd.to_datetime(precos['data'])
+
+# Formatando a coluna 'data' como string
+precos['data'] = precos['data'].dt.strftime('%d-%m-%Y')
+
+# O resto do código continua...
 dff = pd.read_csv(url_precos)
 
-# Selecionando apenas a data e os valores referentes as médias dos produtos
-df = precos.iloc[:,[1,2,6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+# Selecionando apenas a data e os valores referentes às médias dos produtos
+df = precos.iloc[:, [1, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 
 # Selecionando os últimos 30 dias
 df = df.tail(30)
@@ -29,8 +25,7 @@ st.title("Visualização dos produtos de forma individual")
 # Criando uma caixa de seleção
 escolha = st.selectbox(
     'Qual produto você deseja visualizar',
-    ('Selecione um produto','Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga'))
-
+    ('Selecione um produto', 'Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga'))
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Carne
@@ -42,17 +37,19 @@ if escolha == "Carne":
     fig_carne = go.Figure()
     fig_carne.add_trace(go.Scatter(x=dff['data'], y=dff['media_carne'], name='', line=dict(color='royalblue', width=4)))
     fig_carne.update_layout(title='Evolução diária do KG da carne',
-                    xaxis_title='Período',
-                    yaxis_title='Custo (R$)')
+                            xaxis_title='Período',
+                            yaxis_title='Custo (R$)')
     st.plotly_chart(fig_carne, use_container_width=True)
-    
+
     # Mostrando estatísticas descritivas por meio da função st.metric() nos últimos 30 dias
     st.markdown("As informações abaixo mostram quais são os preços mínimo, médio, mediana e preço máximo do KG da carne relativo ao custo médio estimado diário nos últimos 30 dias na cidade de João Pessoa.")
     col1, col2, col3, col4 = st.columns(4)
 
-    min_carne=df['media_carne'].min().round(2); media_carne=df['media_carne'].mean().round(2); mediana_carne=df['media_carne'].median().round(2); 
-    max_carne=df['media_carne'].max().round(2)
-    
+    min_carne = df['media_carne'].min().round(2)
+    media_carne = df['media_carne'].mean().round(2)
+    mediana_carne = df['media_carne'].median().round(2)
+    max_carne = df['media_carne'].max().round(2)
+
     col1.metric("Mínimo", f'R$ {min_carne}')
     col2.metric("Média", f'R$ {media_carne}')
     col3.metric("Mediana", f'R$ {mediana_carne}')
