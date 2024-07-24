@@ -51,8 +51,8 @@ with col1:
 
 # Melhorando a estética dos dados mostrados
 with col2:
-    AgGrid(tabela)
-    #tabela
+    #AgGrid(tabela)
+    st.table(tabela)
     
     
     
