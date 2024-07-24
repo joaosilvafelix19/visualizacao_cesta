@@ -8,24 +8,20 @@ import time
 from st_aggrid import AgGrid
 import os
 
+
 # Importando os dados e fazendo algumas manipulações
 url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
-# Importando os dados dos preços não ponderados
+# Importando os dados dos preços não ponerados
 precos = pd.read_csv(url_precos)
+precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
+dff = pd.read_csv(url_precos)
 
-# Convertendo a coluna 'data' para datetime
-precos['data'] = pd.to_datetime(precos['data'], errors='coerce')
-
-# Aplicando strftime para formatar as datas
-precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y') if pd.notnull(x) else '')
-
-# Selecionando apenas a data e os valores referentes às médias dos produtos
-df = precos.iloc[:, [1, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+# Selecionando apenas a data e os valores referentes as médias dos produtos
+df = precos.iloc[:,[1,2,6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 
 # Selecionando os últimos 30 dias
 df = df.tail(30)
-
 
 # Título da página
 st.title("Visualização dos produtos de forma individual")
@@ -44,10 +40,10 @@ escolha = st.selectbox(
 if escolha == "Carne":
     st.markdown("O Gráfico a seguir mostra a evolução diária do custo médio do KG da carne na cidade de João Pessoa, são considerados para o cálculo da carne o coxão mole (chã de dentro), coxão duro (chã de fora) e patinho.")
     fig_carne = go.Figure()
-    fig_carne.add_trace(go.Scatter(x=precos['data'], y=precos['media_carne'], name='', line=dict(color='royalblue', width=4)))
+    fig_carne.add_trace(go.Scatter(x=dff['data'], y=dff['media_carne'], name='', line=dict(color='royalblue', width=4)))
     fig_carne.update_layout(title='Evolução diária do KG da carne',
-                            xaxis_title='Período',
-                            yaxis_title='Custo (R$)')
+                    xaxis_title='Período',
+                    yaxis_title='Custo (R$)')
     st.plotly_chart(fig_carne, use_container_width=True)
     
     # Mostrando estatísticas descritivas por meio da função st.metric() nos últimos 30 dias
