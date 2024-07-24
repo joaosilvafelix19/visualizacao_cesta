@@ -1,34 +1,24 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
+import os
 import plotly.express as px
 import plotly.graph_objects as go
+import time
+from st_aggrid import AgGrid
+import os
+
 
 # Importando os dados e fazendo algumas manipulações
 url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
-# Tentativa de importação dos dados com tratamento de exceções
-try:
-    precos = pd.read_csv(url_precos)
-except Exception as e:
-    st.error(f"Erro ao importar dados: {e}")
-    st.stop()  # Para a execução se houver erro
-
-# Exibindo uma amostra dos dados para verificar o formato da data
-st.write(precos.head())
-
-# Ajustando o formato da data conforme o formato encontrado
-try:
-    precos['data'] = pd.to_datetime(precos['data'], format='%d-%m-%Y', errors='coerce')
-except Exception as e:
-    st.error(f"Erro ao converter datas: {e}")
-    st.stop()
-
+# Importando os dados dos preços não ponerados
+precos = pd.read_csv(url_precos)
+precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
 dff = pd.read_csv(url_precos)
 
-# Selecionando apenas a data e os valores referentes às médias dos produtos
-df = precos[['data', 'media_carne', 'media_leite', 'media_feijao', 'media_arroz', 
-             'media_farinha', 'media_tomate', 'media_pao', 'media_cafe', 
-             'media_banana', 'media_acucar', 'media_oleo', 'media_manteiga']]
+# Selecionando apenas a data e os valores referentes as médias dos produtos
+df = precos.iloc[:,[1,2,6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 
 # Selecionando os últimos 30 dias
 df = df.tail(30)
@@ -39,8 +29,8 @@ st.title("Visualização dos produtos de forma individual")
 # Criando uma caixa de seleção
 escolha = st.selectbox(
     'Qual produto você deseja visualizar',
-    ('Selecione um produto', 'Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga')
-)
+    ('Selecione um produto','Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga'))
+
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Carne
@@ -86,7 +76,6 @@ if escolha == "Carne":
                     values='Média Carne')
     table_carne = table_carne.T
     st.table(table_carne)
-    
     
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Leite
