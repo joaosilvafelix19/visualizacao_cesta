@@ -60,33 +60,33 @@ if escolha == "Carne":
     st.markdown("As informações abaixo mostram quais são os preços mínimo, médio, mediana e preço máximo do KG da carne relativo ao custo médio estimado diário nos últimos 30 dias na cidade de João Pessoa.")
     col1, col2, col3, col4 = st.columns(4)
 
-    min_carne = df['media_carne'].min().round(2)
-    media_carne = df['media_carne'].mean().round(2)
-    mediana_carne = df['media_carne'].median().round(2)
-    max_carne = df['media_carne'].max().round(2)
+    min_carne=df['media_carne'].min().round(2); media_carne=df['media_carne'].mean().round(2); mediana_carne=df['media_carne'].median().round(2); 
+    max_carne=df['media_carne'].max().round(2)
     
     col1.metric("Mínimo", f'R$ {min_carne}')
     col2.metric("Média", f'R$ {media_carne}')
     col3.metric("Mediana", f'R$ {mediana_carne}')
     col4.metric("Máximo", f'R$ {max_carne}')
     
-    # Box plot custo do quilograma da carne por dia da semana
+    # box plot custo do quilograma da carne por dia da semana
     st.markdown("Já o boxplot abaixo mostra como tem se comportado o preço do KG da carne relativo ao custo médio estimado diário nos últimos 30 dias por dia da semana.")
     box_carne = px.box(df, x="dia_semana", y="media_carne", points="all")
     box_carne.update_layout(title='Custo médio por dia da semana',
                    xaxis_title='Dia da semana',
                    yaxis_title='Custo (R$)')
-    box_carne.update_xaxes(categoryorder='array', categoryarray=['Segunda-Feira','Terça-Feira','Quarta-Feira','Quinta-Feira', 'Sexta-Feira', 'Sábado', 'Domingo'])
+    box_carne.update_xaxes(categoryorder='array', categoryarray= ['Segunda-Feira','Terça-Feira','Quarta-Feira','Quinta-Feira', 'Sexta-Feira', 'Sábado', 'Domingo'])
     st.plotly_chart(box_carne, use_container_width=True)
     
-    # Tabela contendo os últimos sete dias
+    # Tabela contendo osúltimos sete dias
     st.markdown("Por fim, mostra-se os preços médios observados dos últimos 7 dias de coleta na cidade de João Pessoa.")
     table_carne = precos.tail(7).round(2)
     table_carne = table_carne[['data', 'media_carne']]
-    table_carne = table_carne.rename(columns={'data': 'Data', 'media_carne': 'Média Carne'})
-    table_carne = table_carne.pivot_table(index=["Data"], values='Média Carne')
+    table_carne = table_carne.rename(columns = {'data':'Data', 'media_carne':'Média Carne'})
+    table_carne = table_carne.pivot_table(index=["Data"], 
+                    values='Média Carne')
     table_carne = table_carne.T
     st.table(table_carne)
+    
     
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Leite
