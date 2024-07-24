@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.graph_objects as go
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
@@ -9,12 +8,12 @@ url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_ce
 
 # Importando os dados dos preços não ponderados
 precos = pd.read_csv(url_precos).round(2)
-precos['data'] = pd.to_datetime(precos['data'])  # Convertendo para datetime
-precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
+precos['data'] = pd.to_datetime(precos['data'], errors='coerce')  # Convertendo para datetime com tratamento de erros
+precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y') if pd.notnull(x) else '')
 
 precos_ponderados = pd.read_csv(url_cesta).round(2)
-precos_ponderados['data'] = pd.to_datetime(precos_ponderados['data'])  # Convertendo para datetime
-precos_ponderados['data'] = precos_ponderados['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
+precos_ponderados['data'] = pd.to_datetime(precos_ponderados['data'], errors='coerce')  # Convertendo para datetime com tratamento de erros
+precos_ponderados['data'] = precos_ponderados['data'].apply(lambda x: x.strftime('%d-%m-%Y') if pd.notnull(x) else '')
 
 st.title("Download dos dados")
 
