@@ -1,5 +1,4 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -14,7 +13,16 @@ except Exception as e:
     st.error(f"Erro ao importar dados: {e}")
     st.stop()  # Para a execução se houver erro
 
-precos['data'] = pd.to_datetime(precos['data'], format='%d-%m-%Y')
+# Exibindo uma amostra dos dados para verificar o formato da data
+st.write(precos.head())
+
+# Ajustando o formato da data conforme o formato encontrado
+try:
+    precos['data'] = pd.to_datetime(precos['data'], format='%d-%m-%Y', errors='coerce')
+except Exception as e:
+    st.error(f"Erro ao converter datas: {e}")
+    st.stop()
+
 dff = pd.read_csv(url_precos)
 
 # Selecionando apenas a data e os valores referentes às médias dos produtos
@@ -31,7 +39,7 @@ st.title("Visualização dos produtos de forma individual")
 # Criando uma caixa de seleção
 escolha = st.selectbox(
     'Qual produto você deseja visualizar',
-    ('Selecione um produto','Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga')
+    ('Selecione um produto', 'Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga')
 )
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
