@@ -26,6 +26,7 @@ df = precos.iloc[:, [1, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
 # Selecionando os últimos 30 dias
 df = df.tail(30)
 
+
 # Título da página
 st.title("Visualização dos produtos de forma individual")
 
