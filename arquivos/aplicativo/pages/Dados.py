@@ -6,14 +6,6 @@ from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from datetime import datetime, timezone
 
-# Definindo diretório
-root = os.getcwd()
-if root[0] == '/':
-    root = '/GitHub/visualizacao_cesta/'
-else:
-    root = os.path.abspath('../..')
-path = '/arquivos/aplicativo/dados'
-
 url_cesta = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/cesta.csv"
 url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
