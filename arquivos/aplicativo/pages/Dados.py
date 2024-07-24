@@ -44,13 +44,6 @@ if opcao == "Preços":
         mime='text/csv',
     )
     
-    # Melhorando a estética dos dados mostrados
-    gb = GridOptionsBuilder.from_dataframe(precos)
-    gb.configure_pagination(enabled=True)
-    gb.configure_default_column(editable=True, groupable=True)
-    gridoptions = gb.build()
-    AgGrid(precos, gridOptions=gridoptions,
-           allow_unsafe_jscode=True)
     
 # -------------------------------------------------------------------------------------------------------
 # Preços Ponderados 
@@ -73,10 +66,3 @@ if opcao == "Preços Ponderados":
         mime='text/csv',
     )
     
-    # Melhorando a estética dos dados mostrados
-    gb = GridOptionsBuilder.from_dataframe(precos_ponderados)
-    gb.configure_pagination(enabled=True)
-    gb.configure_default_column(editable=True, groupable=True)
-    gridoptions = gb.build()
-    AgGrid(precos_ponderados, gridOptions=gridoptions,
-           allow_unsafe_jscode=True)
