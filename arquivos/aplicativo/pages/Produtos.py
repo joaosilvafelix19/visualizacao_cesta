@@ -10,17 +10,12 @@ import os
 
 
 # Importando os dados e fazendo algumas manipulações
-root = os.getcwd()
-if root[0] == '/':
-    root = '/GitHub/visualizacao_cesta/'
-else:
-    root = os.path.abspath('../..')
-path = '/arquivos/aplicativo/dados'
+url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
 # Importando os dados dos preços não ponerados
-precos = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="precos")
+precos = pd.read_csv(url_precos)
 precos['data'] = precos['data'].apply(lambda x: x.strftime('%d-%m-%Y'))
-dff = pd.read_excel(f"{root}{path}/dados_jp.xlsx", sheet_name="precos")
+dff = pd.read_csv(url_precos)
 
 # Selecionando apenas a data e os valores referentes as médias dos produtos
 df = precos.iloc[:,[1,2,6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
