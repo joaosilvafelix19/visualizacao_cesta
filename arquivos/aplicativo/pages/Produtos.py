@@ -1,20 +1,26 @@
+import streamlit as st
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
 # Importando os dados e fazendo algumas manipulações
 url_precos = "https://raw.githubusercontent.com/joaosilvafelix19/visualizacao_cesta/main/arquivos/aplicativo/dados/precos.csv"
 
-# Importando os dados dos preços não ponderados
-precos = pd.read_csv(url_precos)
+# Tentativa de importação dos dados com tratamento de exceções
+try:
+    precos = pd.read_csv(url_precos)
+except Exception as e:
+    st.error(f"Erro ao importar dados: {e}")
+    st.stop()  # Para a execução se houver erro
 
-# Convertendo a coluna 'data' para datetime
-precos['data'] = pd.to_datetime(precos['data'])
-
-# Formatando a coluna 'data' como string
-precos['data'] = precos['data'].dt.strftime('%d-%m-%Y')
-
-# O resto do código continua...
+precos['data'] = pd.to_datetime(precos['data'], format='%d-%m-%Y')
 dff = pd.read_csv(url_precos)
 
 # Selecionando apenas a data e os valores referentes às médias dos produtos
-df = precos.iloc[:, [1, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50]]
+df = precos[['data', 'media_carne', 'media_leite', 'media_feijao', 'media_arroz', 
+             'media_farinha', 'media_tomate', 'media_pao', 'media_cafe', 
+             'media_banana', 'media_acucar', 'media_oleo', 'media_manteiga']]
 
 # Selecionando os últimos 30 dias
 df = df.tail(30)
@@ -25,7 +31,8 @@ st.title("Visualização dos produtos de forma individual")
 # Criando uma caixa de seleção
 escolha = st.selectbox(
     'Qual produto você deseja visualizar',
-    ('Selecione um produto', 'Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga'))
+    ('Selecione um produto','Carne', 'Leite', 'Feijão', 'Arroz', 'Farinha', 'Tomate', 'Pão', 'Café', 'Banana', 'Açúcar', 'Óleo', 'Manteiga')
+)
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Carne
@@ -37,10 +44,10 @@ if escolha == "Carne":
     fig_carne = go.Figure()
     fig_carne.add_trace(go.Scatter(x=dff['data'], y=dff['media_carne'], name='', line=dict(color='royalblue', width=4)))
     fig_carne.update_layout(title='Evolução diária do KG da carne',
-                            xaxis_title='Período',
-                            yaxis_title='Custo (R$)')
+                    xaxis_title='Período',
+                    yaxis_title='Custo (R$)')
     st.plotly_chart(fig_carne, use_container_width=True)
-
+    
     # Mostrando estatísticas descritivas por meio da função st.metric() nos últimos 30 dias
     st.markdown("As informações abaixo mostram quais são os preços mínimo, médio, mediana e preço máximo do KG da carne relativo ao custo médio estimado diário nos últimos 30 dias na cidade de João Pessoa.")
     col1, col2, col3, col4 = st.columns(4)
@@ -49,28 +56,27 @@ if escolha == "Carne":
     media_carne = df['media_carne'].mean().round(2)
     mediana_carne = df['media_carne'].median().round(2)
     max_carne = df['media_carne'].max().round(2)
-
+    
     col1.metric("Mínimo", f'R$ {min_carne}')
     col2.metric("Média", f'R$ {media_carne}')
     col3.metric("Mediana", f'R$ {mediana_carne}')
     col4.metric("Máximo", f'R$ {max_carne}')
     
-    # box plot custo do quilograma da carne por dia da semana
+    # Box plot custo do quilograma da carne por dia da semana
     st.markdown("Já o boxplot abaixo mostra como tem se comportado o preço do KG da carne relativo ao custo médio estimado diário nos últimos 30 dias por dia da semana.")
     box_carne = px.box(df, x="dia_semana", y="media_carne", points="all")
     box_carne.update_layout(title='Custo médio por dia da semana',
                    xaxis_title='Dia da semana',
                    yaxis_title='Custo (R$)')
-    box_carne.update_xaxes(categoryorder='array', categoryarray= ['Segunda-Feira','Terça-Feira','Quarta-Feira','Quinta-Feira', 'Sexta-Feira', 'Sábado', 'Domingo'])
+    box_carne.update_xaxes(categoryorder='array', categoryarray=['Segunda-Feira','Terça-Feira','Quarta-Feira','Quinta-Feira', 'Sexta-Feira', 'Sábado', 'Domingo'])
     st.plotly_chart(box_carne, use_container_width=True)
     
-    # Tabela contendo osúltimos sete dias
+    # Tabela contendo os últimos sete dias
     st.markdown("Por fim, mostra-se os preços médios observados dos últimos 7 dias de coleta na cidade de João Pessoa.")
     table_carne = precos.tail(7).round(2)
     table_carne = table_carne[['data', 'media_carne']]
-    table_carne = table_carne.rename(columns = {'data':'Data', 'media_carne':'Média Carne'})
-    table_carne = table_carne.pivot_table(index=["Data"], 
-                    values='Média Carne')
+    table_carne = table_carne.rename(columns={'data': 'Data', 'media_carne': 'Média Carne'})
+    table_carne = table_carne.pivot_table(index=["Data"], values='Média Carne')
     table_carne = table_carne.T
     st.table(table_carne)
     
