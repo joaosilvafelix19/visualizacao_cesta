@@ -44,10 +44,10 @@ escolha = st.selectbox(
 if escolha == "Carne":
     st.markdown("O Gráfico a seguir mostra a evolução diária do custo médio do KG da carne na cidade de João Pessoa, são considerados para o cálculo da carne o coxão mole (chã de dentro), coxão duro (chã de fora) e patinho.")
     fig_carne = go.Figure()
-    fig_carne.add_trace(go.Scatter(x=dff['data'], y=dff['media_carne'], name='', line=dict(color='royalblue', width=4)))
+    fig_carne.add_trace(go.Scatter(x=precos['data'], y=precos['media_carne'], name='', line=dict(color='royalblue', width=4)))
     fig_carne.update_layout(title='Evolução diária do KG da carne',
-                    xaxis_title='Período',
-                    yaxis_title='Custo (R$)')
+                            xaxis_title='Período',
+                            yaxis_title='Custo (R$)')
     st.plotly_chart(fig_carne, use_container_width=True)
     
     # Mostrando estatísticas descritivas por meio da função st.metric() nos últimos 30 dias
